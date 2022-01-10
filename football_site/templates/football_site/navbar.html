@@ -101,11 +101,11 @@
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#">&#128273;Logout</a>
+            <a class="nav-link" href="{% url 'logout' %}">&#128273;Logout</a>
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{#">&#128273;Login</a>
+            <a class="nav-link" href="{% url 'login' %}">&#128273;Login</a>
           </li>
 
         {% endif %}
