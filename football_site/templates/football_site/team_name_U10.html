@@ -1,0 +1,49 @@
+{% extends 'football_site/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<h1>U10 Teams</h1>
+	<br/>
+
+
+
+<div class="accordion" id="accordionExample">
+	{% for team in team_name_U10 %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        {{ team }}
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div>
+  				<ul>
+    				<li><strong>Venue:</strong> {{ team.venue }}</li>
+    				<li><strong>Address:</strong> {{ team.contact }}</li>
+    				<li><strong>Contact Name:</strong> {{ team.contact }}</li>
+    				<li><strong>Contact Mob:</strong> {{ team.contact_mob }}</li>
+    				<li><strong>Contact Email:</strong> {{ team.contact_email }}</li>
+    				<li><strong>Map Address Link:</strong> {{ team.map_link }}</li>
+  				</ul>
+				</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+	
+
+
+
+{% else %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <h1>Sorry! You Must Be Logged In to View This!</h1>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -83,11 +83,14 @@ WSGI_APPLICATION = 'myfootball.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
     }
 }
 
+DATABASES['default'] = dj_database_url.config(default='postgres://npmyjihvcjpptr:54dd148ceb2e767ac9c73eaa6ad9dd06f9d059fa3557b25df3dbaac92c22115d@ec2-44-199-52-133.compute-1.amazonaws.com:5432/d89b6esbaifle0')
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
