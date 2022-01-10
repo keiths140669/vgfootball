@@ -1,0 +1,42 @@
+{% extends 'football_site/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1 style="text-align:center;">U9 Player Match Stats</h1>
+  <br/>
+  
+<div class="container">	
+  <div class="row">
+    {% for stat in stats_players_list reversed %}
+      <div class="col-xs-6 col-md-4">
+        <div class="card border-success mb-3 bg-success p-2 text-dark bg-opacity-25 text-center border border-3">
+          <div class="card-header text-white bg-success mb-3">
+          {{ stat.stat_date}}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text">
+              <h6 style="text-align:left;"><strong>Team Playing: </strong>{{stat.team }}</h6>
+              <h6 style="text-align:left;"><strong>Player: </strong>{{ stat.player_name }}</h6>
+              <h6 style="text-align:left;"><strong>Date: </strong>{{ stat.stat_date }}</h6>
+              <h6 style="text-align:left;"><strong>Goals Scored: </strong>{{ stat.stat_goals_scored }}</h6>
+              <h6 style="text-align:left;"><strong>Goals Assists: </strong>{{ stat.stat_goal_assists }}</h6>
+      		
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% else %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <h1>Sorry! You Must Be Logged In to View This!</h1>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% endblock %}
