@@ -47,11 +47,16 @@ def stats_players_U9(request):
 		})
 
 def stats_players_U10(request):
-	stats_players_U10 = Stat.objects.filter(age_group="U10").order_by('stat_date')
+	searchTerm = request.GET.get('searchPlayer')
+	if searchTerm:
+		stats_players_U10 = Stat.objects.filter(player_name__player__icontains=searchTerm)
+	else:
+		stats_players_U10 = Stat.objects.filter(age_group="U10").order_by('stat_date')
 	stats_players_count_U10 = Player.objects.all()
 
 	return render(request, 'football_site/stats_U10.html', {
 		'stats_players_list': stats_players_U10,
+		'searchTerm': searchTerm
 		})
 
 def fixture_U10(request):
