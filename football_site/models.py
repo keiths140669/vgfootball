@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class TeamName(models.Model):
 	STATUS = [
 		('U7', 'U7'),

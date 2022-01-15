@@ -7,6 +7,7 @@ from .models import Fixture
 from .models import Player 
 from .models import Stat
 from django.db.models import Count, Sum, Avg
+from django.db.models import Q
 
 def home(request):
 	
@@ -49,15 +50,18 @@ def stats_players_U9(request):
 def stats_players_U10(request):
 	searchTerm = request.GET.get('searchPlayer')
 	if searchTerm:
-		stats_players_U10 = Stat.objects.filter(player_name__player__icontains=searchTerm)
+		#stats_players_U10 = Stat.objects.filter(Q(player_name__first_name__icontains=searchTerm)|Q(player_name__last_name__icontains=searchTerm)).order_by('stat_date')
+		stats_players_U10 = Stat.objects.filter(age_group="U10")
+		stats_players_U10_1 = stats_players_U10.filter(Q(player_name__first_name__icontains=searchTerm)|Q(player_name__last_name__icontains=searchTerm)).order_by('stat_date')
 	else:
-		stats_players_U10 = Stat.objects.filter(age_group="U10").order_by('stat_date')
-	stats_players_count_U10 = Player.objects.all()
+		#stats_players_U10 = Stat.objects.all()
+		stats_players_U10_1 = Stat.objects.filter(age_group="U10").order_by('stat_date')
+		stats_players_count_U10 = Player.objects.all()
 
 	return render(request, 'football_site/stats_U10.html', {
-		'stats_players_list': stats_players_U10,
-		'searchTerm': searchTerm
-		})
+	'stats_players_list': stats_players_U10_1,
+	'searchTerm': searchTerm
+	})
 
 def fixture_U10(request):
 	fixture_U10 = Fixture.objects.filter(age_group="U10")

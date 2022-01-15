@@ -4,12 +4,15 @@
 {% if user.is_authenticated %}
 
 <h1 style="text-align:center;">U10 Player Match Stats</h1>
-  <br/>
-  <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2 "type="search" placeholder="Search" name="searchPlayer">
-    <br/>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
+
+<form>
+  <input class="form-control mr-sm-2 "type="search" placeholder="Search" name="searchPlayer">
+  <br>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+  
+
+  
 <br/>  
 <div class="container">	
   <div class="row">
@@ -19,17 +22,17 @@
           <div class="card-header text-white bg-success mb-3">
           {{ stat.stat_date}}
           </div>
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text">
-              <h6 style="text-align:left;"><strong>Team Playing: </strong>{{stat.team }}</h6>
-              <h6 style="text-align:left;"><strong>Player: </strong>{{ stat.player_name }}</h6>
-              <h6 style="text-align:left;"><strong>Date: </strong>{{ stat.stat_date }}</h6>
-              <h6 style="text-align:left;"><strong>Goals Scored: </strong>{{ stat.stat_goals_scored }}</h6>
-              <h6 style="text-align:left;"><strong>Goals Assists: </strong>{{ stat.stat_goal_assists }}</h6>
-      		
-            </p>
-          </div>
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text">
+                <h6 style="text-align:left;"><strong>Team Playing: </strong>{{stat.team }}</h6>
+                <h6 style="text-align:left;"><strong>Player: </strong>{{ stat.player_name }}</h6>
+                <h6 style="text-align:left;"><strong>Date: </strong>{{ stat.stat_date }}</h6>
+                <h6 style="text-align:left;"><strong>Goals Scored: </strong>{{ stat.stat_goals_scored }}</h6>
+                <h6 style="text-align:left;"><strong>Goals Assists: </strong>{{ stat.stat_goal_assists }}</h6>
+
+              </p>
+            </div>
         </div>
       </div>
     {% endfor %}
