@@ -64,7 +64,7 @@ def stats_players_U10(request):
 	})
 
 def fixture_U10(request):
-	fixture_U10 = Fixture.objects.filter(age_group="U10")
+	fixture_U10 = Fixture.objects.filter(age_group="U10").order_by('fixture_date')
 	return render(request, 'football_site/fixture_U10.html', {
 		'fixture_list_U10': fixture_U10,
 		})
