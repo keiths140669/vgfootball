@@ -9,4 +9,5 @@ urlpatterns = [
     path('goals_scored_U10', views.goals_scored_U10, name='goals-scored-U10'),
     path('team_name_U10', views.team_name_U10, name='team-name-U10'),
     path('team_name_U9', views.team_name_U9, name='team-name-U9'),
+    path('result_U10', views.result_U10, name='result-U10'),
 ]

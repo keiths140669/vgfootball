@@ -13,6 +13,12 @@ def home(request):
 	
 	return render(request, 'football_site/home.html')
 
+def result_U10(request):
+	result_U10 = Fixture.objects.filter(age_group="U10").order_by('fixture_date')
+	return render(request, 'football_site/result_U10.html', {
+		'result_list_U10': result_U10,
+		})
+
 def team_name_U9(request):
 	team_name_U9 = TeamName.objects.filter(age_group="U9").order_by('team_name')
 
