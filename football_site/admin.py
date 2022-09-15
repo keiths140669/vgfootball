@@ -11,7 +11,7 @@ class TeamNameAdmin(admin.ModelAdmin):
 
 @admin.register(Stat)
 class StatsAdmin(admin.ModelAdmin):
-	list_display = ('stat_date', 'player_name', 'stat_goal_assists', 'stat_goals_scored', 'team', 'half_time', 'full_time', 'player_of_the_match', 'comments', 'playing', 'age_group')
+	list_display = ('stat_date', 'player_name', 'stat_goal_assists', 'stat_goals_scored', 'team', 'age_group')
 	ordering = ('-stat_date',)
 
 @admin.register(Player)
@@ -21,6 +21,6 @@ class PlayerAdmin(admin.ModelAdmin):
 
 @admin.register(Fixture)
 class FixturesAdmin(admin.ModelAdmin):
-	list_display = ('fixture_date', 'home_team', 'away_team', 'age_group')
+	list_display = ('fixture_date', 'home_team', 'away_team', 'age_group', 'half_time', 'full_time')
 	ordering = ('-fixture_date',)
 
