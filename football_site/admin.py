@@ -11,7 +11,7 @@ class TeamNameAdmin(admin.ModelAdmin):
 
 @admin.register(Stat)
 class StatsAdmin(admin.ModelAdmin):
-	list_display = ('stat_date', 'player_name', 'stat_goal_assists', 'stat_goals_scored', 'team', 'age_group')
+	list_display = ('stat_date', 'player_name', 'stat_goal_assists', 'stat_goals_scored', 'team', 'half_time', 'full_time', 'player_of_the_match', 'comments', 'playing', 'age_group')
 	ordering = ('-stat_date',)
 
 @admin.register(Player)
